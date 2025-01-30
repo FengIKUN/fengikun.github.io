@@ -12,7 +12,7 @@ tags:
 
 
 > 所有数列记号的花括号无法显示，请自行脑补（.
-{: .prompt-warning }
+{:warning}
 
 
 ## 基础方法
@@ -39,7 +39,7 @@ $$
 
 
 > 注意如果利用$a_n=S_n-S_{n-1}$, 则必须要求$n\geq2$.
-{: .prompt-tip }
+{:.info}
 
 
 **例1** 已知数列${a_n}$满足$a_1=1$, 前$n$项和为$S_n$，且$\forall n\in\mathbb{N},\ S_n=n^2a_n$, 求此数列的通项公式.
@@ -86,8 +86,8 @@ a_n&=\dfrac{(n+1)(n-1)}{n^2}\dfrac{n(n-2)}{(n-1)^2}\dfrac{(n-1)(n-3)}{(n-2)^2}..
 &=\dfrac{n+1}{2n}.
 \end{align*}$$
 
-> 中间从$(n-1)$到$3$的项被全部约去，而分母上$n$和$2$只被约去了一次，分子上$(n+1)$没有被约去.
-{: .prompt-tip }
+中间从$(n-1)$到$3$的项被全部约去，而分母上$n$和$2$只被约去了一次，分子上$(n+1)$没有被约去.
+{:.info}
 
 我们也可以将原式化为
 
@@ -97,14 +97,16 @@ $$\dfrac{na_n}{(n-1)a_{n-1}}=\dfrac{n+1}{n}.$$
 
 $$\dfrac{b_n}{b_{n-1}}=\dfrac{n+1}{n}.$$
 
+得
+
 $$\begin{align*}
 na_n=b_n&=\dfrac{n+1}{n}\dfrac{n}{n-1}\dfrac{n-1}{n-2}...\dfrac{4}{3}\cdot\dfrac{3}{2}\\
-&=\dfrac{n+1}{2}
+&=\dfrac{n+1}{2}.
 \end{align*}$$
 
 所以
 
-$$a_n=\dfrac{n+1}{2n}$$
+$$a_n=\dfrac{n+1}{2n}.$$
 
 
 
