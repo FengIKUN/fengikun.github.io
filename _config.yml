@@ -1,15 +1,15 @@
 # Site settings
-title: Gungnir
-SEOTitle: Jekyll theme Gungnir
-description: Jekyll version of the blog theme Gungnir.
-keyword: "jekyll, theme, blog, blog theme"
-url: "https://jekyll-theme-gungnir.vercel.app"      # your host, for absolute URL
+title: Kaedeameno Sei
+SEOTitle: Kaedeameno Sei's Blog
+description: Kaedeameno Sei's Blog
+keyword: "blog"
+url: "https://kaedeame.us.kg"      # your host, for absolute URL
 baseurl: ""                                         # for example, '/blog' if your blog hosted on 'host/blog'
-avatar: "img/header-avatar.jpeg"                    # the avatar showing on the homepage
+avatar: "img/web-app-manifest-192x192.png"                    # the avatar showing on the homepage
 
 
 # GitHub repository (if the site is hosted by GitHub)
-repository: Renovamen/jekyll-theme-gungnir
+repository: FengIKUN/fengikun.github.io
 repository_branch: main
 
 
