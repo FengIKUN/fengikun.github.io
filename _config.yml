@@ -16,7 +16,7 @@ repository_branch: main
 # Theme style settings
 theme_style:
   highlight:    # "dark" (default), "light"
-  alert:        # "flat" (default), "modern"
+  alert: "modern"       # "flat" (default), "modern"
   post_preview: # "image" (default), "text"
                 # display post's featured image on homepage or not
 
@@ -54,13 +54,13 @@ collections:
 # SNS settings
 sns:
   RSS: true
-  github_username: Renovamen
+  github_username: FengIKUN
   weibo_username:
   zhihu_username: chao-neng-gui-su
-  twitter_username: renovamen_zxh
-  facebook_username: renovamen.zou
-  linkedin_username: xiaohan-zou-55bba0160
-  email_address: renovamenzxh@gmail.com
+  twitter_username: fengikunmu
+  facebook_username:
+  linkedin_username:
+  email_address: me@kaedeame.us.kg
 
 
 # Build settings
@@ -80,7 +80,7 @@ exclude:
   - /node_modules
 anchorjs: true  # if you want to customize anchor. check out `anchor.html`
 # If you have timezone issue (e.g. #68) in China, uncomment to use this:
-# timezone: CN
+timezone: CN
 
 
 # Gems
@@ -105,13 +105,7 @@ menus:
     url: /
   - title: About
     font: fas fa-paw
-    submenus:
-      - title: Me
-        font: fas fa-user-astronaut
-        url: /about/
-      - title: Theme
-        font: fas fa-meteor
-        url: /theme/
+    url: /about/
   - title: Archive
     font: fas fa-archive
     url: /archive/
@@ -125,18 +119,16 @@ comment:
   provider: gitalk # false (default), "disqus", "gitalk", "valine"
 
   # Disqus settings
-  disqus_username: renovamen
+  disqus_username:
 
   # Gitalk settings
   # https://github.com/gitalk/gitalk
   gitalk:
-    clientID: 'faf464da633b08ff5317'
-    clientSecret: '402324fc860894e5fcba6320fddbddd1ec7f5644'
-    repo: gitalk-comments
-    owner: This-is-an-Apple
+    clientID:
+    clientSecret:
+    repo:
+    owner:
     admin:
-      - Renovamen
-      - This-is-an-Apple
 
   # Valine settings
   # https://valine.js.org/
@@ -148,10 +140,10 @@ comment:
 # Analytics settings
 analytics:
   # Baidu Analytics
-  ba_track_id: 00504d7a0bf51278aa92b36e60e830b5 # [your baidu track id]
+  ba_track_id: # [your baidu track id]
 
   # Google Analytics
-  ga_track_id: 'G-ZYM02DSEHS'               # [your google track id]
+  ga_track_id:  # [your google track id]
 
 
 # Progressive Web Apps

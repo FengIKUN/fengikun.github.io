@@ -2,7 +2,7 @@
 layout: post
 title: 数列笔记 1
 #subtitle: 数列笔记 1
-#header-img: img/in-post/2020-10-07/header.jpg
+header-img: img/in-post/2020-10-07/header.jpg
 header-style: text
 catalog: true
 tags:
