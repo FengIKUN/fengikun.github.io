@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 数列笔记 1
+title: 数列递推·笔记 1
 #subtitle: 数列笔记 1
 header-img: img/in-post/2020-10-07/header.jpg
 header-style: text
@@ -107,6 +107,95 @@ na_n=b_n&=\dfrac{n+1}{n}\dfrac{n}{n-1}\dfrac{n-1}{n-2}...\dfrac{4}{3}\cdot\dfrac
 所以
 
 $$a_n=\dfrac{n+1}{2n}.$$
+
+## 推广
+
+### 一阶线性递推
+
+$$a_{n+1}=pa_n+q.$$
+
+假设数列${a_n+t}$为等比数列，则
+
+$$a_{n+1}+t=p(a_n+t).$$
+
+即
+
+$$a_{n+1}=pa_n+(p-1)t.$$
+
+对比系数可知
+
+$$(p-1)t=q.$$
+
+即
+
+$$t=\dfrac{q}{p-1}.$$
+
+所以数列${a_n+\dfrac{q}{p-1}}$为等比数列, 公比为$p$，有
+
+$$a_n+\dfrac{q}{p-1}=\left(a_1+\dfrac{q}{p-1}\right)p^{n-1}.$$
+
+就得到数列${a_n}$的通项公式为
+
+$$a_n=\left(a_1+\dfrac{q}{p-1}\right)p^{n-1}-\dfrac{q}{p-1}.$$
+
+### 变式的一阶线性递推
+
+**变式 1**
+
+$$a_{n+1}=pa_n^r.$$
+
+两边取对数得
+
+$$\ln a_{n+1}=r\ln a_n + \ln p.$$
+
+令$b_n=\ln a_n$，则$b_{n+1}=rb_n+p$，由前面的结论可知
+
+$$b_n=\left(b_1+\dfrac{p}{r-1}\right)r^{n-1}-\dfrac{p}{r-1}.$$
+
+即
+
+$$a_n=\exp\left(\left(\mathrm{e}^{a_1}+\dfrac{p}{r-1}\right)r^{n-1}-\dfrac{p}{r-1}\right).$$
+
+**变式 2**
+
+$${a_{n+1}}=\dfrac{a_n}{pa_n+q}.$$
+
+两边取倒数得
+
+$$\dfrac{1}{a_{n+1}}=q\cdot\dfrac{1}{a_n}+p.$$
+
+可知
+
+$$a_n=\dfrac1{\left(\dfrac1{a_1}+\dfrac{p}{q-1}\right)q^{n-1}-\dfrac{p}{q-1}}.$$
+
+**变式 3**
+
+$$a_{n+1}=pa_n+qn+r$$
+
+假设数列${a_n+sn+t}$是等比数列，则
+
+$$a_{n+1}+s(n+1)+t=p(a_n+sn+t).$$
+
+则
+
+$$a_{n+1}=pa_n+(p-1)sn+pt-s-t.$$
+
+对比系数知
+
+$$(p-1)s=q,\; (p-1)t-s=r.$$
+
+得
+
+$$s=\dfrac{q}{p-1},\; t=\dfrac{(p-1)r+q}{p-1}$$
+
+可知数列${a_n+sn+t}$是等比数列，公比为$p$，
+
+$$a_n+sn+t=(a_1+s+t)p^{n-1}.$$
+
+即
+
+$$a_n=\left(a_1+\dfrac{(p-1)r+2q}{p-1}\right)p^{n-1}-\dfrac{q}{p-1}n-\dfrac{(p-1)r+q}{p-1}.$$
+
 
 
 

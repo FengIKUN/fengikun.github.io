@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 一个关于天体运动的问题
+title: 天体运动·水题 1
 #subtitle: 一个关于天体运动的问题
 header-img: img/in-post/2020-10-07/header.jpg
 header-style: text
