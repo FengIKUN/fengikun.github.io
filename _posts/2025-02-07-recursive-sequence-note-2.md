@@ -37,7 +37,7 @@ G(\lambda a_n+\mu b_n;x)&=\sum_{n=0}^\infin(\lambda a_n+\mu b_n)x^n\\&=\lambda\s
 
 以一个简单的数列为例, $a_{n+1}=2a_n+2$, 其中$a_1=1.$
 
-为了求出$G(a_n;x)=\sum_{n=0}^\infin a_nx^n$, 我们将递推式两边同时乘$x^n$, 得
+为了求出$G(a_n;x)=\displaystyle\sum_{n=0}^\infin a_nx^n$, 我们将递推式两边同时乘$x^n$, 得
 
 $$\dfrac1xa_{n+1}x^{n+1}=2a_nx^n+2x^n.$$
 
@@ -49,7 +49,7 @@ $$\dfrac1x\sum_{n=1}^\infin a_nx^n=2\sum_{n=0}^\infin a_nx^n+2\sum_{n=0}^\infin 
 
 $$\sum_{n=1}^\infin a_nx^n=\sum_{n=0}^\infin a_nx^n-a_0=G(a_n;x)-a_0.$$
 
-因此接下来要计算$\sum_{n=0}^\infin x^n.$
+因此接下来要计算$\displaystyle\sum_{n=0}^\infin x^n.$
 
 设
 
@@ -94,7 +94,7 @@ G(a_n;x)=\dfrac{-2}{1-x}+\dfrac{\dfrac32}{1-2x}.
 
 ### 利用生成函数求数列通项
 
-以前例中的生成函数$(1)$为例, 根据线性性, 可以先求解第一项, 即需要将$\dfrac{-2}{1-x}$写成$\sum_{n=0}^\infin b_nx^n$的形式.
+以前例中的生成函数$(1)$为例, 根据线性性, 可以先求解第一项, 即需要将$\dfrac{-2}{1-x}$写成$\displaystyle\sum_{n=0}^\infin b_nx^n$的形式.
 
 利用先前得到的
 
