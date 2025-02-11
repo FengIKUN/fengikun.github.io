@@ -160,20 +160,20 @@ $$A+B=-1, \dfrac{1-\sqrt5}{2}A+\dfrac{1+\sqrt5}{2}B=0.$$
 
 解得
 
-$$A=\dfrac1{\sqrt5}\dfrac{1+\sqrt5}{2}, B=\dfrac1{\sqrt5}\dfrac{1-\sqrt5}{2}.$$
+$$A=-\dfrac1{\sqrt5}\dfrac{1+\sqrt5}{2}, B=\dfrac1{\sqrt5}\dfrac{1-\sqrt5}{2}.$$
 
 即
 
 $$\begin{align*}
-G(x)&=\dfrac{\dfrac1{\sqrt5}\dfrac{1+\sqrt5}{2}}{x+\dfrac{1+\sqrt5}{2}}+\dfrac{\dfrac1{\sqrt5}\dfrac{1-\sqrt5}{2}}{x+\dfrac{1-\sqrt5}{2}}\\
-&=\dfrac1{\sqrt5}\left(\dfrac{1}{1-\dfrac{1-\sqrt5}{2}x}+\dfrac{1}{1-\dfrac{1+\sqrt5}{2}x}\right)\\
-&=\dfrac1{\sqrt5}\left(\sum_{n=0}^\infin\left(\dfrac{1-\sqrt5}{2}x\right)^n+\sum_{n=0}^\infin\left(\dfrac{1+\sqrt5}{2}x\right)^n\right)\\
-&=\sum_{n=0}^\infin\dfrac1{\sqrt5}\left(\left(\dfrac{1-\sqrt5}{2}\right)^n+\left(\dfrac{1+\sqrt5}{2}\right)^n\right)x^n.
+G(x)&=\dfrac{\dfrac1{\sqrt5}\dfrac{1-\sqrt5}{2}}{x+\dfrac{1-\sqrt5}{2}}-\dfrac{\dfrac1{\sqrt5}\dfrac{1+\sqrt5}{2}}{x+\dfrac{1+\sqrt5}{2}}\\
+&=\dfrac1{\sqrt5}\left(\dfrac{1}{1-\dfrac{1+\sqrt5}{2}x}-\dfrac{1}{1-\dfrac{1-\sqrt5}{2}x}\right)\\
+&=\dfrac1{\sqrt5}\left(\sum_{n=0}^\infin\left(\dfrac{1+\sqrt5}{2}x\right)^n-\sum_{n=0}^\infin\left(\dfrac{1-\sqrt5}{2}x\right)^n\right)\\
+&=\sum_{n=0}^\infin\dfrac1{\sqrt5}\left(\left(\dfrac{1+\sqrt5}{2}\right)^n-\left(\dfrac{1-\sqrt5}{2}\right)^n\right)x^n.
 \end{align*}$$
 
 因此
 
-$$F_n=\dfrac1{\sqrt5}\left(\left(\dfrac{1-\sqrt5}{2}\right)^n+\left(\dfrac{1+\sqrt5}{2}\right)^n\right).$$
+$$F_n=\dfrac1{\sqrt5}\left(\left(\dfrac{1+\sqrt5}{2}\right)^n-\left(\dfrac{1-\sqrt5}{2}\right)^n\right).$$
 
 
 
