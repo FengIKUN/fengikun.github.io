@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chidori Shiori | 乱七八糟的博客</title>
+    <title>友情链接 | Chidori Shiori | 乱七八糟的博客</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -147,7 +147,7 @@
             text-align: center;
             margin-bottom: 60px;
             position: relative;
-            background-color: rgba(20, 20, 30, 0.4);
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.4) 0%, rgba(15, 15, 25, 0.6) 100%);
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -158,7 +158,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at top left, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
             z-index: -1;
         }
         
@@ -199,207 +199,214 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* 主要内容区域 */
-        .main-content {
-            padding: 30px 0 60px;
-            flex: 1;
+        /* 友情链接区域样式 */
+        .links-content {
+            padding: 60px 0;
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            transition: var(--transition);
             position: relative;
-            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            min-height: 180px;
+            border-radius: 0;
+            box-shadow: var(--shadow-md);
         }
         
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--text-light);
+        .link-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(138, 43, 226, 0.3);
+        }
+        
+        .link-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .link-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-accent);
+            margin-right: 15px;
+        }
+        
+        .link-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-accent);
+        }
+        
+        .link-url {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+        
+        .link-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .link-tag {
             display: inline-block;
-            padding-bottom: 15px;
-            position: relative;
+            background: rgba(138, 43, 226, 0.15);
+            color: var(--primary-accent);
+            padding: 3px 12px;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
         }
         
-        .section-title h2::after {
+        .link-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        
+        .link-rss {
+            color: #f26522;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .link-rss i {
+            margin-right: 5px;
+        }
+        
+        .link-visit {
+            color: var(--primary-accent);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .link-visit i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .link-card:hover .link-visit i {
+            transform: translateX(4px);
+        }
+        
+        /* 友情链接申请区域 */
+        .link-request {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-request::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-accent);
-        }
-        
-        /* 文章卡片 - 直角设计 */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-        
-        .article-card {
-            background: var(--card-bg);
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
+            top: 0;
+            right: 0;
+            width: 40%;
             height: 100%;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.1) 0%, rgba(94, 23, 224, 0.05) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+            z-index: 0;
         }
         
-        .article-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
-        }
-        
-        .article-img {
-            height: 200px;
-            overflow: hidden;
-            flex-shrink: 0;
-            position: relative;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .article-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .article-card:hover .article-img img {
-            transform: scale(1.05);
-        }
-        
-        .article-content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .article-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .article-meta span {
-            display: flex;
-            align-items: center;
-        }
-        
-        .article-meta i {
-            margin-right: 8px;
-            color: var(--primary-accent);
-        }
-        
-        .article-content h3 {
-            font-size: 1.35rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
-            line-height: 1.4;
-            font-weight: 600;
-        }
-        
-        .article-content p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.7;
-            font-size: 1rem;
-            flex-grow: 1;
-        }
-        
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            color: var(--primary-accent);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        
-        .read-more i {
-            margin-left: 10px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        
-        .read-more:hover {
-            color: #a75fff;
-        }
-        
-        .read-more:hover i {
-            transform: translateX(5px);
-        }
-        
-        .category-tag {
-            position: absolute;
-            top: 15px;
-            left: 0;
-            background: var(--card-bg);
-            color: var(--primary-accent);
-            padding: 6px 18px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-sm);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--border-color);
-            border-left: none;
-        }
-        
-        /* 特色内容区域 */
-        .featured-section {
-            background-color: rgba(20, 20, 30, 0.4);
-            padding: 50px 0;
-            margin: 60px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .featured-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .featured-img {
-            flex: 1;
-            min-height: 300px;
-            position: relative;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-        }
-        
-        .featured-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .featured-text {
-            flex: 1;
-        }
-        
-        .featured-text h3 {
+        .link-request h2 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--text-light);
-            line-height: 1.3;
+            color: var(--primary-accent);
+            position: relative;
+            z-index: 1;
         }
         
-        .featured-text p {
+        .request-desc {
             color: var(--text-secondary);
             margin-bottom: 25px;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .request-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            background: rgba(20, 20, 30, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .full-width {
+            grid-column: span 2;
+        }
+        
+        .form-btn {
+            grid-column: span 2;
+            justify-self: end;
         }
         
         /* 页脚 */
@@ -435,25 +442,17 @@
             background-color: var(--primary-accent);
         }
         
-        .footer-column p {
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-        
         .social-links {
             display: flex;
-            flex-direction: row; /* 确保图标横向排列 */
-            flex-wrap: nowrap;   /* 防止图标换行 */
+            flex-direction: row;
+            flex-wrap: nowrap;
             gap: 12px;
             margin-top: 20px;
         }
 
-        /* 确保图标容器内的每个项目保持固定尺寸 */
         .social-links a {
             display: flex;
-            flex-shrink: 0;      /* 防止缩小 */
+            flex-shrink: 0;
             align-items: center;
             justify-content: center;
             width: 40px;
@@ -464,7 +463,6 @@
             font-size: 1.1rem;
         }
 
-        /* 以下是图标悬停效果设置 - 保留原有效果 */
         .social-links a.github i { color: #ffffff; }
         .social-links a.github:hover {
             background: #6e5494; 
@@ -542,27 +540,7 @@
         }
         
         /* =============== 响应式设计 (优化方案) =============== */
-        /* 移动端优先设计策略 */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.9rem;
-            }
-            
-            .featured-content {
-                flex-direction: column;
-            }
-            
-            .featured-img {
-                min-height: 250px;
-            }
-        }
-        
         @media (max-width: 768px) {
-            /* 头部区域 */
             .hero {
                 padding: 60px 0 40px;
             }
@@ -623,16 +601,6 @@
                 width: 100%;
             }
             
-            /* 文章网格 */
-            .articles-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .article-card {
-                margin: 0;
-            }
-            
             /* 确保关闭按钮位置正确 */
             .close-menu {
                 right: 20px;
@@ -640,49 +608,26 @@
                 display: flex;
             }
             
-            /* 特色区域 */
-            .featured-section {
-                padding: 40px 0;
-                margin: 40px 0;
+            .links-grid {
+                grid-template-columns: 1fr;
             }
             
-            .section-title h2 {
-                font-size: 1.8rem;
+            .request-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-width, .form-btn {
+                grid-column: span 1;
             }
         }
         
         @media (max-width: 480px) {
-            /* 进一步优化小屏幕 */
             .hero h1 {
                 font-size: 1.7rem;
             }
             
-            .hero p {
-                font-size: 0.95rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            
-            .article-img {
-                height: 180px;
-            }
-            
-            .article-content {
+            .link-card {
                 padding: 20px;
-            }
-            
-            .article-content h3 {
-                font-size: 1.25rem;
-            }
-            
-            .featured-text h3 {
-                font-size: 1.5rem;
-            }
-            
-            .footer-content {
-                gap: 30px;
             }
         }
         
@@ -701,7 +646,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-container">
-                <a href="#" class="logo">Chidori&nbsp;<span>Shiori</span></a>
+                <a href="index.html" class="logo">Chidori&nbsp;<span>Shiori</span></a>
                 
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -711,10 +656,10 @@
                     <button class="close-menu">
                         <i class="fas fa-times"></i>
                     </button>
-                    <li><a href="./index.html" class="active">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./archive.html">Archive</a></li>
-                    <li><a href="./links.html">Links</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="links.html" class="active">Links</a></li>
                 </ul>
             </div>
         </div>
@@ -723,54 +668,112 @@
     <!-- 头部区域 -->
     <header class="hero">
         <div class="container">
-            <h1>处于感受态的大肠杆菌</h1>
-            <p>一个什么都学不好的高中生 | 分享无厘头笔记与游戏生活</p>
-            <a href="#" class="btn">浏览最新内容</a>
+            <h1>友情链接</h1>
+            <p>这里是我喜欢的网站和博客 | 欢迎志同道合的朋友交换友情链接</p>
         </div>
     </header>
 
-    <!-- 主要内容 -->
-    <main class="main-content">
+    <!-- 链接页面主体内容 -->
+    <main class="links-content">
         <div class="container">
-            
-            <!-- 特色内容区域 -->
-            <div class="featured-section">
-                <div class="container">
-                    <div class="featured-content">
-                        <div class="featured-img">
-                            <img src="https://images.unsplash.com/photo-1697479665524-3e06cf37b2b7?q=80&w=1428&auto=format&fit=crop" alt="特色内容">
+            <div class="links-grid">
+                <div class="link-card">
+                    <div class="link-header">
+                        <img src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" class="link-avatar" alt="墨白">
+                        <div>
+                            <div class="link-name">墨白</div>
                         </div>
-                        <div class="featured-text">
-                            <h3>入门Shiori语完整指南</h3>
-                            <p>Et articles-grid sdiu ssut em diat ut e asbriutious meta.</p>
-                            <p>Astas o iumunism haat, ium luminiousnas dem.</p>
-                            <a href="#" class="btn">下载PDF指南</a>
+                    </div>
+                    <div class="link-tag">数学 & 算法</div>
+                    <div class="link-desc">专注于数学理论研究与算法探索的博客，分享深度学习前沿知识与算法实现。</div>
+                    <div class="link-info">
+                        <!-- <a href="#" class="link-rss"><i class="fas fa-rss"></i> RSS</a> -->
+                        <a href="https://mbai.me/" class="link-visit">访问站点 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-header">
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" class="link-avatar" alt="算法时空">
+                        <div>
+                            <div class="link-name">算法时空</div>
                         </div>
+                    </div>
+                    <div class="link-tag">算法 & 编程</div>
+                    <div class="link-desc">一位竞赛选手的成长日志，分享算法竞赛题解和学习心得，偶尔写点技术文章。</div>
+                    <div class="link-info">
+                        <a href="https://embaster.us.kg" class="link-visit">访问站点 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-header">
+                        <img src="https://plus.unsplash.com/premium_photo-1666739086992-ce91cfac4666?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" class="link-avatar" alt="节奏世界">
+                        <div>
+                            <div class="link-name">节奏世界</div>
+                        </div>
+                    </div>
+                    <div class="link-tag">音乐 & 游戏</div>
+                    <div class="link-desc">资深音游玩家的聚集地，分享各种音游技巧、谱面分析和社区活动。</div>
+                    <div class="link-info">
+                        <a href="https://rhythmsekai.top" class="link-visit">访问站点 <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
             
-            <!-- 更多文章 -->
-            <div class="section-title">
-                <h2>最新文章</h2>
-            </div>
-            
-            <div class="articles-grid">
-                <article class="article-card">
-                    <div class="article-img">
-                        <img src="https://images.unsplash.com/photo-1594845222818-9097c52dabb5?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0" alt="物理">
-                        <span class="category-tag">物理</span>
+            <div class="link-request">
+                <h2>申请友情链接</h2>
+                <p class="request-desc">
+                    如果您是个人博客或网站博主，欢迎申请友情链接！
+                    请填写以下信息，我会在1-3个工作日内回复。期待与您建立联系！
+                </p>
+                
+                <form class="request-form">
+                    <div class="form-group">
+                        <label for="site-name">网站名称</label>
+                        <input type="text" id="site-name" placeholder="您的网站名称" required>
                     </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span><i class="far fa-calendar"></i> 2023-05-25</span>
-                            <span><i class="far fa-bookmark"></i> 7分钟阅读</span>
-                        </div>
-                        <h3>天体运动 水题</h3>
-                        <p>**Problem**木星是太阳系中质量最大的行星。假设地球和木星都在绕太阳的圆形轨道上运行，且它们的轨道共面。将太阳、地球和木星视为点质量，忽略太阳系中其他天体的引力影响，并假设在某些时刻地球与木星之间的引力可以忽略不计。设太阳和木星的质量分别为 $m_s$ 和 $m_j$，引力常数为 $\mathrm{G}$。地球和木星绕太阳的轨道半径……</p>
-                        <a href="#" class="read-more">阅读全文 <i class="fas fa-long-arrow-alt-right"></i></a>
+                    
+                    <div class="form-group">
+                        <label for="site-url">网站网址</label>
+                        <input type="url" id="site-url" placeholder="https://example.com" required>
                     </div>
-                </article>
+                    
+                    <div class="form-group full-width">
+                        <label for="site-desc">网站描述</label>
+                        <textarea id="site-desc" placeholder="请简要描述您的网站内容 (50字以内)" maxlength="100" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="site-category">网站类别</label>
+                        <select id="site-category" required>
+                            <option value="">请选择类别</option>
+                            <option value="math">数学</option>
+                            <option value="physics">物理</option>
+                            <option value="coding">编程</option>
+                            <option value="education">教育</option>
+                            <option value="personal">个人博客</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="site-email">您的邮箱</label>
+                        <input type="email" id="site-email" placeholder="您的联系邮箱" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <input type="checkbox" required>
+                        <label>
+                            我已添加贵站链接至我的网站
+                        </label>
+                        
+                    </div>
+                    
+                    <div class="form-btn">
+                        <button type="submit" class="btn">提交申请</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
@@ -784,17 +787,17 @@
                     <p>什么都学不好的高中生，喜欢睡觉、游戏<del>和物理</del>。</p>
                     <div class="social-links">
                         <!-- GitHub -->
-                        <a href="https://github.com/fengikun" class="github" title="GitHub">
+                        <a href="https://github.com/fengikun" class="github" title="GitHub" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
                         
                         <!-- QQ -->
-                        <a href="写不下了，只好写在这里，QQ号是3070598318" class="qq" title="QQ">
+                        <a href="#" class="qq" title="QQ">
                             <i class="fab fa-qq"></i>
                         </a>
                         
                         <!-- Twitter -->
-                        <a href="https://x.com/Fengikunmu" class="twitter" title="Twitter">
+                        <a href="https://x.com/Fengikunmu" class="twitter" title="Twitter" target="_blank">
                             <i class="fab fa-twitter"></i>
                         </a>
                         
@@ -821,6 +824,7 @@
                         <li><a href="#">数学</a></li>
                         <li><a href="#">游戏</a></li>
                         <li><a href="#">物理</a></li>
+                        <li><a href="#">生活</a></li>
                     </ul>
                 </div>
                 
@@ -878,6 +882,42 @@
             } else {
                 navbar.style.boxShadow = 'none';
             }
+        });
+        
+        // 友情链接表单验证与提交
+        const requestForm = document.querySelector('.request-form');
+        requestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const siteName = document.getElementById('site-name').value;
+            const siteUrl = document.getElementById('site-url').value;
+            
+            // 创建成功消息
+            const successMessage = document.createElement('div');
+            successMessage.style.cssText = `
+                padding: 20px;
+                background: rgba(25, 135, 84, 0.15);
+                color: #75b798;
+                border: 1px solid rgba(92, 184, 92, 0.3);
+                margin-top: 20px;
+                border-radius: 0;
+            `;
+            successMessage.innerHTML = `
+                <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                感谢您的申请！${siteName} 的链接请求已提交成功，我会尽快处理。
+            `;
+            
+            // 插入到表单下方
+            this.parentNode.insertBefore(successMessage, this.nextSibling);
+            
+            // 重置表单
+            this.reset();
+            
+            // 3秒后滚动到表单位置
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我 | Chidori Shiori</title>
+    <title>About | Chidori Shiori | 乱七八糟的博客</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -19,7 +19,6 @@
             --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
             --transition: all 0.3s ease;
             --header-height: 60px;
-            --section-spacing: 80px;
         }
         
         * {
@@ -142,9 +141,9 @@
             width: 100%;
         }
         
-        /* 关于页面头部区域 */
-        .about-hero {
-            padding: var(--section-spacing) 0 calc(var(--section-spacing) - 20px);
+        /* 头部区域 */
+        .hero {
+            padding: 80px 0 40px;
             text-align: center;
             margin-bottom: 60px;
             position: relative;
@@ -152,7 +151,7 @@
             border-bottom: 1px solid var(--border-color);
         }
         
-        .about-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -163,24 +162,44 @@
             z-index: -1;
         }
         
-        .about-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 25px;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             font-weight: 800;
-            background: linear-gradient(45deg, #9d50bb, #6e48aa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+            line-height: 1.2;
         }
         
-        .about-hero .subtitle {
-            font-size: 1.4rem;
-            max-width: 800px;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto 30px;
             color: var(--text-secondary);
-            font-weight: 300;
+            line-height: 1.7;
         }
         
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* 关于页面主体内容 */
         .about-content {
             padding: 60px 0;
         }
@@ -250,7 +269,7 @@
         }
         
         .profile-value {
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             font-weight: 400;
         }
         
@@ -314,14 +333,14 @@
         
         .quote-section p {
             font-style: italic;
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             color: var(--text-light);
             line-height: 1.7;
             position: relative;
         }
         
         .quote-section p::before {
-            content: """;
+            content: "";
             font-size: 3rem;
             position: absolute;
             top: -15px;
@@ -345,7 +364,6 @@
             padding: 60px 0 30px;
             border-top: 1px solid var(--border-color);
             width: 100%;
-            margin-top: auto;
         }
         
         .footer-content {
@@ -379,10 +397,11 @@
             gap: 12px;
             margin-top: 20px;
         }
-        
+
+        /* 确保图标容器内的每个项目保持固定尺寸 */
         .social-links a {
             display: flex;
-            flex-shrink: 0;
+            flex-shrink: 0;      /* 防止缩小 */
             align-items: center;
             justify-content: center;
             width: 40px;
@@ -391,6 +410,56 @@
             border: 1px solid var(--border-color);
             transition: var(--transition);
             font-size: 1.1rem;
+        }
+
+        /* 以下是图标悬停效果设置 */
+        .social-links a.github i { color: #ffffff; }
+        .social-links a.github:hover {
+            background: #6e5494; 
+            transform: translateY(-5px);
+            border-color: #6e5494;
+        }
+
+        .social-links a.qq i { color: #ffffff; }
+        .social-links a.qq:hover {
+            background: #12b7f5;
+            transform: translateY(-5px);
+            border-color: #12b7f5;
+        }
+
+        .social-links a.twitter i { color: #ffffff; }
+        .social-links a.twitter:hover {
+            background: #1da1f2;
+            transform: translateY(-5px);
+            border-color: #1da1f2;
+        }
+
+        .social-links a.email i { color: #ffffff; }
+        .social-links a.email:hover {
+            background: #ea4335;
+            transform: translateY(-5px);
+            border-color: #ea4335;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-accent);
+            padding-left: 5px;
         }
         
         .copyright {
@@ -402,36 +471,232 @@
             margin-top: 20px;
         }
         
+        /* 关闭按钮样式 */
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 时间线效果 */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: rgba(138, 43, 226, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: calc(50% - 40px);
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            float: left;
+            clear: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            float: right;
+            clear: left;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-accent);
+            border: 4px solid var(--dark-bg);
+            top: 24px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -32px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -32px;
+        }
+        
+        .timeline-content {
+            text-align: center;
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
         /* =============== 响应式设计 =============== */
-        @media (max-width: 768px) {
-            .about-hero h1 {
+        /* 移动端优先设计策略 */
+        @media (max-width: 992px) {
+            .hero h1 {
                 font-size: 2.3rem;
             }
-            
-            .about-hero .subtitle {
-                font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            /* 头部区域 */
+            .hero {
+                padding: 60px 0 40px;
             }
             
-            .about-card::before {
-                width: 50%;
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
             }
             
-            .profile-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            .hero p {
+                font-size: 1.05rem;
+                margin-bottom: 25px;
+                padding: 0 10px;
             }
             
-            .interests-grid {
-                grid-template-columns: 1fr;
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+            
+            /* 导航栏 */
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 101;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* 修复：从右侧完全隐藏 */
+                width: 100%; /* 占据整个屏幕宽度 */
+                height: 100vh;
+                background-color: rgba(10, 10, 15, 0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 80px 30px 30px;
+                backdrop-filter: blur(10px);
+                z-index: 100;
+                border-left: none;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px;
+                width: 100%;
+            }
+            
+            .nav-links li a {
+                font-size: 1.2rem;
+                padding: 8px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            /* 确保关闭按钮位置正确 */
+            .close-menu {
+                right: 20px;
+                top: 20px;
+                display: flex;
+            }
+            
+            /* 时间线效果 */
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                float: none;
+                clear: none;
+                margin-bottom: 30px;
+                padding: 15px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                float: none;
+                clear: none;
+                margin-left: 40px;
+            }
+            
+            .timeline-item::after {
+                left: -30px;
+                top: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* 进一步优化小屏幕 */
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
             }
             
             .card-content {
                 padding: 20px;
             }
             
-            .quote-section {
-                padding: 20px;
+            .interests-grid {
+                grid-template-columns: 1fr;
             }
+            
+            .timeline-item::after {
+                width: 16px;
+                height: 16px;
+                left: -28px;
+            }
+        }
+        
+        /* 确保内容不会溢出屏幕 */
+        img, video, .container, .article-card, .btn {
+            max-width: 100%;
+        }
+        
+        .container, .footer-content, .articles-grid, .featured-content {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -440,7 +705,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-container">
-                <a href="index.html" class="logo">墨<span>影</span></a>
+                <a href="#" class="logo">Chidori&nbsp;<span>Shiori</span></a>
                 
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -450,87 +715,96 @@
                     <button class="close-menu">
                         <i class="fas fa-times"></i>
                     </button>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="about.html" class="active">关于</a></li>
-                    <li><a href="#">联系</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="links.html">Links</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- 关于页面头部区域 -->
-    <header class="about-hero">
+    <!-- 头部区域 -->
+    <header class="hero">
         <div class="container">
-            <h1>Chidori Shiori (千鳥 詩織)</h1>
-            <p class="subtitle">一位在四川求学的高中生 | 好奇世界的一切 | 喜欢探索数学与物理之美</p>
+            <h1>Chidori Shiori</h1>
+            <p>来自四川的高中生 | 杂学旁收的知识收集者 | 节奏游戏爱好者</p>
+            <a href="#journey" class="btn">了解我的故事</a>
         </div>
     </header>
 
-    <!-- 关于内容区域 -->
+    <!-- About页面主体内容 -->
     <main class="about-content">
         <div class="container">
             <div class="about-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-user-graduate"></i> 学生身份</h2>
+                    <h2><i class="fas fa-user-circle"></i> 我是谁</h2>
                 </div>
                 <div class="card-content">
                     <div class="profile-grid">
                         <div class="profile-label">
                             <i class="fas fa-user"></i>
-                            <span>姓名</span>
+                            <span>Name</span>
                         </div>
-                        <div class="profile-value">千鳥 詩織 (Chidori Shiori)</div>
+                        <div class="profile-value">Chidori Shiori</div>
                         
                         <div class="profile-label">
-                            <i class="fas fa-school"></i>
-                            <span>学生身份</span>
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>身份</span>
                         </div>
-                        <div class="profile-value">四川高中在读学生</div>
+                        <div class="profile-value">来自四川的高中生</div>
                         
                         <div class="profile-label">
-                            <i class="fas fa-compass"></i>
-                            <span>座右铭</span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>位置</span>
                         </div>
-                        <div class="profile-value">涉猎广泛，浅尝辄止</div>
+                        <div class="profile-value">中国・四川</div>
+                        
+                        <div class="profile-label">
+                            <i class="fas fa-star"></i>
+                            <span>特色</span>
+                        </div>
+                        <div class="profile-value">什么都学不好的小天才</div>
                     </div>
                     
+                    <p>我是一位来自四川高中生，对世界充满好奇但学什么都不懂。</p>
+
                     <div class="quote-section">
-                        <p>"学习新知识就像打开一扇扇未知的门，每一扇门后都藏着令人惊喜的世界。也许我不会推开每扇门走得很远，但我享受站在门前的期待感与好奇心。"</p>
+                        <p>"我就是总是学不好任何东西——这是我独特的天赋，涉猎广泛但无一精通。也许这就是我的魅力所在，永远保持好奇但永不拘泥于一处。"</p>
                         <div class="author">—— Chidori Shiori</div>
                     </div>
                     
-                    <p>我是一个普通的高中生，但在平凡的学习生活中保持着对世界的好奇心。在学校，我和同学们一样面临着各科课程和升学压力，但在探索知识的过程中，我找到了属于自己的快乐。</p>
                 </div>
             </div>
             
             <div class="about-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-brain"></i> 学术兴趣</h2>
+                    <h2><i class="fas fa-brain"></i> 日常兴趣</h2>
                 </div>
                 <div class="card-content">
-                    <p>我热爱探索知识的边界，尤其是数学与物理世界中那些令人惊叹的结构与规律。虽然学业压力不小，但我仍会在课余时间探寻课本之外的有趣知识。</p>
-                    
+                    <p>我喜欢探索知识的边界，尤其是数学与物理世界中那些令人惊叹的结构与规律。虽然学业压力不小，但我仍会在课余时间探寻课本之外的有趣知识。</p>
+                    <br/>
                     <div class="interests-grid">
                         <div class="interest-card">
                             <div class="interest-icon"><i class="fas fa-square-root-alt"></i></div>
                             <div class="interest-title">数学之美</div>
-                            <div class="interest-desc">从几何图形的对称美到微积分的精妙变化，数学像一首无声的诗</div>
+                            <div class="interest-desc">从几何图形的对称美到微积分的精妙变化，数学像一首无声的诗。我对数学逻辑感到着迷，但做不好证明题。</div>
                         </div>
                         
                         <div class="interest-card">
                             <div class="interest-icon"><i class="fas fa-atom"></i></div>
-                            <div class="interest-title">物理奥秘</div>
-                            <div class="interest-desc">牛顿定律的简洁与量子力学的玄妙，都让我着迷不已</div>
+                            <div class="interest-title">音乐奥秘</div>
+                            <div class="interest-desc">音乐的强大力量让我着迷（？），尝试自己写作结果却很不理想，也许是没有这方面的天赋吧。有什么不吃天赋的曲风吗？</div>
                         </div>
                         
                         <div class="interest-card">
-                            <div class="interest-icon"><i class="fas fa-code"></i></div>
-                            <div class="interest-title">编程探索</div>
-                            <div class="interest-desc">偶尔写几行代码，享受逻辑在屏幕上跳跃的乐趣</div>
+                            <div class="interest-icon"><i class="fas fa-globe-asia"></i></div>
+                            <div class="interest-title">文化探索</div>
+                            <div class="interest-desc">没什么文化的我总喜欢阅读先秦时期的诗歌，体会简单的生活之美。曾经有着学习日语、俄语、德语、法语的宏伟愿望，但最终一样也没有完成。:(</div>
                         </div>
                     </div>
-                    
-                    <p>我常把学习比作在知识的海洋里拾贝。虽然没能深入每一片海域，但每个领域都有着独特的风景值得一看。这种浅尝辄止的学习方式让我对世界保持了开放与好奇。</p>
+                    <br/>
+                    <p>我常把学习比作在知识的海洋里拾贝。虽然没能深入每一片海域，但每个领域都有着独特的风景值得一看。这种浅尝辄止的学习方式让我对世界保持了开放与好奇。（好吧，我承认，是因为根本学不明白）</p>
                 </div>
             </div>
             
@@ -539,39 +813,64 @@
                     <h2><i class="fas fa-gamepad"></i> 休闲时光</h2>
                 </div>
                 <div class="card-content">
-                    <p>学习之余，我有一个特殊的爱好：节奏游戏。在紧张刺激的打击音符中，我找到了专注与放松的平衡点。</p>
-                    
+                    <p>底力空虚的音游人，懒惰推分。</p>
+                    <br/>
                     <div class="interests-grid">
                         <div class="interest-card">
                             <div class="interest-icon"><i class="fas fa-music"></i></div>
                             <div class="interest-title">节奏游戏</div>
-                            <div class="interest-desc">指尖在屏幕上飞舞，音符如雨点般落下</div>
+                            <div class="interest-desc">声光交融，指尖灵动，即使是我，也感到心潮澎湃。目前推《Phigros》和《Arcaea》。</div>
                         </div>
                         
                         <div class="interest-card">
                             <div class="interest-icon"><i class="fas fa-headphones"></i></div>
                             <div class="interest-title">音乐体验</div>
-                            <div class="interest-desc">从电子乐到古典乐，享受不同风格带来的律动感</div>
+                            <div class="interest-desc">从电子乐到古典乐，享受不同风格带来的律动感。喜欢制作歌单分享音乐发现。</div>
+                        </div>
+                        
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-film"></i></div>
+                            <div class="interest-title">Minecraft</div>
+                            <div class="interest-desc">一个不会红石也不会PVP的Minecrafter。于是乎只好退而去当建筑党，奈何建筑也不怎么会。</div>
                         </div>
                     </div>
-                    
-                    <p>不同于许多同龄人对动漫、游戏的深度沉浸，我更享受轻度的休闲方式。在我的生活中，ACGN文化只是一个旁观者的位置，而非参与者。</p>
+                    <br/>
+                    <p>不同于许多同龄人对动漫、游戏的深度沉浸，我更享受轻度的休闲方式。在我的生活中，ACGN文化只是一个旁观者的位置，而非参与者。比起追漫补番，我更喜欢补觉。</p>
                 </div>
             </div>
             
             <div class="about-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-book"></i> 浅尝辄止的哲学</h2>
+                    <h2><i class="fas fa-comments"></i> 联系我</h2>
                 </div>
                 <div class="card-content">
-                    <p>我深知自己在许多领域都是个"博而不精"的学习者。但在现阶段，我反而珍视这种学习态度：</p>
+                    <p>如果你也是什么都学不好的学习者，或者只是想聊聊天，随时欢迎联系我！一起探讨为什么什么都学不好的奥秘。<br/><br/></p>
                     
-                    <div class="quote-section">
-                        <p>"知识的星空是如此辽阔，我不愿早早把视线锁定在某一角落。就像在图书馆漫步，随手翻阅不同的书籍，每一本都给我新的启发，虽然可能不会把任何一本完全记住。"</p>
-                        <div class="author">—— Chidori Shiori</div>
-                    </quote>
-                    
-                    <p>我的学习就像是在不同星系间做短暂旅行，体会它们的魅力，而后转向下一个目的地。也许未来会专攻某一领域，但此刻的广度探索让我感到充实与愉悦。</p>
+                    <div class="profile-grid">
+                        <div class="profile-label">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="profile-value"><a href="https://github.com/fengikun" target="_blank">Fengikun</a></div>
+                        
+                        <div class="profile-label">
+                            <i class="fab fa-qq"></i>
+                            <span>QQ</span>
+                        </div>
+                        <div class="profile-value">3070598318</div>
+                        
+                        <div class="profile-label">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </div>
+                        <div class="profile-value"><a href="https://x.com/Fengikunmu" target="_blank">@Fengikunmu</a></div>
+                        
+                        <div class="profile-label">
+                            <i class="far fa-envelope"></i>
+                            <span>邮箱</span>
+                        </div>
+                        <div class="profile-value"><a href="mailto:feng.ikunmu@foxmail.com">feng.ikunmu@foxmail.com</a></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -582,34 +881,68 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>关于墨影</h3>
-                    <p>探索知识边界，分享学习的快乐</p>
+                    <h3>关于 Chidori Shiori</h3>
+                    <p>什么都学不好的高中生，喜欢睡觉、游戏<del>和物理</del>。</p>
                     <div class="social-links">
-                        <a href="mailto:contact@example.com" class="email" title="邮箱">
-                            <i class="far fa-envelope"></i>
+                        <!-- GitHub -->
+                        <a href="https://github.com/fengikun" class="github" title="GitHub" target="_blank">
+                            <i class="fab fa-github"></i>
                         </a>
+                        
+                        <!-- QQ -->
                         <a href="#" class="qq" title="QQ">
                             <i class="fab fa-qq"></i>
+                        </a>
+                        
+                        <!-- Twitter -->
+                        <a href="https://x.com/Fengikunmu" class="twitter" title="Twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        
+                        <!-- 邮箱 -->
+                        <a href="mailto:feng.ikunmu@foxmail.com" class="email" title="邮箱">
+                            <i class="far fa-envelope"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>探索链接</h3>
-                    <p><a href="#">学习笔记</a></p>
-                    <p><a href="#">发现新领域</a></p>
-                    <p><a href="#">灵感时刻</a></p>
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="links.html">Links</a></li>
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>联系我</h3>
-                    <p>有任何问题或想交流的想法？</p>
-                    <p><a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <h3>分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">数学</a></li>
+                        <li><a href="#">游戏</a></li>
+                        <li><a href="#">物理</a></li>
+                        <li><a href="#">生活</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>订阅更新</h3>
+                    <p>获取最新的无聊发疯文学</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="您的邮箱地址" required 
+                               style="width:100%; padding: 14px; margin-bottom: 15px; 
+                                      background: rgba(0,0,0,0.2); 
+                                      color: var(--text-light);
+                                      border: 1px solid var(--border-color);
+                                      font-size: 1rem;">
+                        <button type="submit" class="btn" style="width: 100%;">立即订阅</button>
+                    </form>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2023 墨影 | Chidori Shiori | 在知识的海洋中浅尝辄止</p>
+                <p>© 2025 Chidori Shiori. All rights reserved. | 处于感受态的大肠杆菌</p>
             </div>
         </div>
     </footer>
