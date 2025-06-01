@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chidori Shiori | 乱七八糟的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0f0f12;
+            --card-bg: #1a1a23;
+            --text-light: #f0f0f0;
+            --text-secondary: #b0b0c0;
+            --primary-accent: #8a2be2;
+            --secondary-accent: #5e17e0;
+            --border-color: rgba(90, 90, 130, 0.4);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+            --header-height: 60px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 导航栏 - 直角设计 */
+        .navbar {
+            background-color: rgba(15, 15, 20, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            padding: 0 10px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-light);
+            margin-left: 5px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: var(--transition);
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            font-size: 1.1rem;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-accent);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* 头部区域 */
+        .hero {
+            padding: 80px 0 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            background-color: rgba(20, 20, 30, 0.4);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-accent);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            padding: 30px 0 60px;
+            flex: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 0 10px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-accent);
+        }
+        
+        /* 文章卡片 - 直角设计 */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .article-card {
+            background: var(--card-bg);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        
+        .article-img {
+            height: 200px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .article-card:hover .article-img img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .article-meta i {
+            margin-right: 8px;
+            color: var(--primary-accent);
+        }
+        
+        .article-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .article-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .read-more i {
+            margin-left: 10px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .read-more:hover {
+            color: #a75fff;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            background: var(--card-bg);
+            color: var(--primary-accent);
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--border-color);
+            border-left: none;
+        }
+        
+        /* 特色内容区域 */
+        .featured-section {
+            background-color: rgba(20, 20, 30, 0.4);
+            padding: 50px 0;
+            margin: 60px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .featured-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .featured-img {
+            flex: 1;
+            min-height: 300px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-text {
+            flex: 1;
+        }
+        
+        .featured-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+        
+        .featured-text p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: #0a0a10;
+            color: var(--text-light);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: row; /* 确保图标横向排列 */
+            flex-wrap: nowrap;   /* 防止图标换行 */
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* 确保图标容器内的每个项目保持固定尺寸 */
+        .social-links a {
+            display: flex;
+            flex-shrink: 0;      /* 防止缩小 */
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        /* 以下是图标悬停效果设置 - 保留原有效果 */
+        .social-links a.github i { color: #ffffff; }
+        .social-links a.github:hover {
+            background: #6e5494; 
+            transform: translateY(-5px);
+            border-color: #6e5494;
+        }
+
+        .social-links a.qq i { color: #ffffff; }
+        .social-links a.qq:hover {
+            background: #12b7f5;
+            transform: translateY(-5px);
+            border-color: #12b7f5;
+        }
+
+        .social-links a.twitter i { color: #ffffff; }
+        .social-links a.twitter:hover {
+            background: #1da1f2;
+            transform: translateY(-5px);
+            border-color: #1da1f2;
+        }
+
+        .social-links a.email i { color: #ffffff; }
+        .social-links a.email:hover {
+            background: #ea4335;
+            transform: translateY(-5px);
+            border-color: #ea4335;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* 关闭按钮样式 */
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* =============== 响应式设计 (优化方案) =============== */
+        /* 移动端优先设计策略 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .featured-content {
+                flex-direction: column;
+            }
+            
+            .featured-img {
+                min-height: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 头部区域 */
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .hero p {
+                font-size: 1.05rem;
+                margin-bottom: 25px;
+                padding: 0 10px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+            
+            /* 导航栏 */
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 101;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* 修复：从右侧完全隐藏 */
+                width: 100%; /* 占据整个屏幕宽度 */
+                height: 100vh;
+                background-color: rgba(10, 10, 15, 0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 80px 30px 30px;
+                backdrop-filter: blur(10px);
+                z-index: 100;
+                border-left: none;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px;
+                width: 100%;
+            }
+            
+            .nav-links li a {
+                font-size: 1.2rem;
+                padding: 8px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            /* 文章网格 */
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .article-card {
+                margin: 0;
+            }
+            
+            /* 确保关闭按钮位置正确 */
+            .close-menu {
+                right: 20px;
+                top: 20px;
+                display: flex;
+            }
+            
+            /* 特色区域 */
+            .featured-section {
+                padding: 40px 0;
+                margin: 40px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* 进一步优化小屏幕 */
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .article-img {
+                height: 180px;
+            }
+            
+            .article-content {
+                padding: 20px;
+            }
+            
+            .article-content h3 {
+                font-size: 1.25rem;
+            }
+            
+            .featured-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+        }
+        
+        /* 确保内容不会溢出屏幕 */
+        img, video, .container, .article-card, .btn {
+            max-width: 100%;
+        }
+        
+        .container, .footer-content, .articles-grid, .featured-content {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">Chidori&nbsp;<span>Shiori</span></a>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <button class="close-menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Archive</a></li>
+                    <li><a href="#">Links</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部区域 -->
+    <header class="hero">
+        <div class="container">
+            <h1>处于感受态的大肠杆菌</h1>
+            <p>一个什么都学不好的高中生高中生 | 分享无厘头笔记与游戏生活</p>
+            <a href="#" class="btn">浏览最新内容</a>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- 特色内容区域 -->
+            <div class="featured-section">
+                <div class="container">
+                    <div class="featured-content">
+                        <div class="featured-img">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="特色内容">
+                        </div>
+                        <div class="featured-text">
+                            <h3>暗色系设计完整指南</h3>
+                            <p>这本全面指南深入解析暗色设计的原理与实践，包含色彩理论、用户心理学和实际设计案例。无论您是UI设计师还是前端开发者，都能从中获益。</p>
+                            <p>从选择合适的颜色对比度到创建层次分明的布局，本指南覆盖了所有关键知识点，帮助您创建既美观又实用的暗色界面。</p>
+                            <a href="#" class="btn">下载PDF指南</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 更多文章 -->
+            <div class="section-title">
+                <h2>最新文章</h2>
+            </div>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="设计工具">
+                        <span class="category-tag">设计工具</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 2023-05-25</span>
+                            <span><i class="far fa-bookmark"></i> 7分钟阅读</span>
+                        </div>
+                        <h3>Figma暗色设计插件的最佳实践</h3>
+                        <p>介绍顶尖Figma暗色设计插件，大幅提升你的设计效率和效果...</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="设计理念">
+                        <span class="category-tag">设计理念</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 2023-05-18</span>
+                            <span><i class="far fa-bookmark"></i> 9分钟阅读</span>
+                        </div>
+                        <h3>深色界面中的留白艺术</h3>
+                        <p>探索如何利用留白在暗色设计中创造焦点和平衡...</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1555066932-e78dd8271b3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="技术教程">
+                        <span class="category-tag">技术教程</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 2023-05-10</span>
+                            <span><i class="far fa-bookmark"></i> 12分钟阅读</span>
+                        </div>
+                        <h3>CSS实现精确直角布局的技巧</h3>
+                        <p>掌握使用CSS创建完美直线布局的方法，提升界面结构的严谨性...</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于 Chidori Shiori</h3>
+                    <p>什么都学不好的高中生，喜欢睡觉、游戏<del>和物理</del>。</p>
+                    <div class="social-links">
+                        <!-- GitHub -->
+                        <a href="https://github.com/fengikun" class="github" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        
+                        <!-- QQ -->
+                        <a href="写不下了，只好写在这里，QQ号是3070598318" class="qq" title="QQ">
+                            <i class="fab fa-qq"></i>
+                        </a>
+                        
+                        <!-- Twitter -->
+                        <a href="https://x.com/Fengikunmu" class="twitter" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        
+                        <!-- 邮箱 -->
+                        <a href="mailto:feng.ikunmu@foxmail.com" class="email" title="邮箱">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Archive</a></li>
+                        <li><a href="#">Links</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">数学</a></li>
+                        <li><a href="#">游戏</a></li>
+                        <li><a href="#">物理</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>订阅更新</h3>
+                    <p>获取最新的无聊发疯文学</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="您的邮箱地址" required 
+                               style="width:100%; padding: 14px; margin-bottom: 15px; 
+                                      background: rgba(0,0,0,0.2); 
+                                      color: var(--text-light);
+                                      border: 1px solid var(--border-color);
+                                      font-size: 1rem;">
+                        <button type="submit" class="btn" style="width: 100%;">立即订阅</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Chidori Shiori. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 移动端菜单交互
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // 点击菜单链接关闭菜单
+        const menuLinks = document.querySelectorAll('.nav-links a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // 添加滚动时导航栏变化
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

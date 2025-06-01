@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | Chidori Shiori</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0f0f12;
+            --card-bg: #1a1a23;
+            --text-light: #f0f0f0;
+            --text-secondary: #b0b0c0;
+            --primary-accent: #8a2be2;
+            --secondary-accent: #5e17e0;
+            --border-color: rgba(90, 90, 130, 0.4);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+            --header-height: 60px;
+            --section-spacing: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 导航栏 - 直角设计 */
+        .navbar {
+            background-color: rgba(15, 15, 20, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            padding: 0 10px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-light);
+            margin-left: 5px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: var(--transition);
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            font-size: 1.1rem;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-accent);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* 关于页面头部区域 */
+        .about-hero {
+            padding: var(--section-spacing) 0 calc(var(--section-spacing) - 20px);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.4) 0%, rgba(15, 15, 25, 0.6) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top left, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #9d50bb, #6e48aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        .about-hero .subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        .about-content {
+            padding: 60px 0;
+        }
+        
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            margin-bottom: 40px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.1) 0%, rgba(94, 23, 224, 0.05) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+            z-index: -1;
+        }
+        
+        .card-header {
+            padding: 25px 30px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .card-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-header h2 i {
+            color: var(--primary-accent);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px 30px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .profile-value {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .interest-card {
+            background: rgba(25, 25, 35, 0.7);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .interest-card:hover {
+            background: rgba(30, 30, 40, 0.8);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .interest-icon {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 5rem;
+            opacity: 0.1;
+            color: var(--primary-accent);
+            z-index: 0;
+        }
+        
+        .interest-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-accent);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .interest-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-section {
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.1) 0%, rgba(94, 23, 224, 0.05) 100%);
+            border-left: 4px solid var(--primary-accent);
+            padding: 25px 30px;
+            margin: 35px 0;
+        }
+        
+        .quote-section p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .quote-section p::before {
+            content: """;
+            font-size: 3rem;
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .author {
+            font-size: 1rem;
+            text-align: right;
+            color: var(--primary-accent);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: #0a0a10;
+            color: var(--text-light);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-accent);
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* =============== 响应式设计 =============== */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .about-hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-card::before {
+                width: 50%;
+            }
+            
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .quote-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">墨<span>影</span></a>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <button class="close-menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="about.html" class="active">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 关于页面头部区域 -->
+    <header class="about-hero">
+        <div class="container">
+            <h1>Chidori Shiori (千鳥 詩織)</h1>
+            <p class="subtitle">一位在四川求学的高中生 | 好奇世界的一切 | 喜欢探索数学与物理之美</p>
+        </div>
+    </header>
+
+    <!-- 关于内容区域 -->
+    <main class="about-content">
+        <div class="container">
+            <div class="about-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-user-graduate"></i> 学生身份</h2>
+                </div>
+                <div class="card-content">
+                    <div class="profile-grid">
+                        <div class="profile-label">
+                            <i class="fas fa-user"></i>
+                            <span>姓名</span>
+                        </div>
+                        <div class="profile-value">千鳥 詩織 (Chidori Shiori)</div>
+                        
+                        <div class="profile-label">
+                            <i class="fas fa-school"></i>
+                            <span>学生身份</span>
+                        </div>
+                        <div class="profile-value">四川高中在读学生</div>
+                        
+                        <div class="profile-label">
+                            <i class="fas fa-compass"></i>
+                            <span>座右铭</span>
+                        </div>
+                        <div class="profile-value">涉猎广泛，浅尝辄止</div>
+                    </div>
+                    
+                    <div class="quote-section">
+                        <p>"学习新知识就像打开一扇扇未知的门，每一扇门后都藏着令人惊喜的世界。也许我不会推开每扇门走得很远，但我享受站在门前的期待感与好奇心。"</p>
+                        <div class="author">—— Chidori Shiori</div>
+                    </div>
+                    
+                    <p>我是一个普通的高中生，但在平凡的学习生活中保持着对世界的好奇心。在学校，我和同学们一样面临着各科课程和升学压力，但在探索知识的过程中，我找到了属于自己的快乐。</p>
+                </div>
+            </div>
+            
+            <div class="about-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-brain"></i> 学术兴趣</h2>
+                </div>
+                <div class="card-content">
+                    <p>我热爱探索知识的边界，尤其是数学与物理世界中那些令人惊叹的结构与规律。虽然学业压力不小，但我仍会在课余时间探寻课本之外的有趣知识。</p>
+                    
+                    <div class="interests-grid">
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-square-root-alt"></i></div>
+                            <div class="interest-title">数学之美</div>
+                            <div class="interest-desc">从几何图形的对称美到微积分的精妙变化，数学像一首无声的诗</div>
+                        </div>
+                        
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-atom"></i></div>
+                            <div class="interest-title">物理奥秘</div>
+                            <div class="interest-desc">牛顿定律的简洁与量子力学的玄妙，都让我着迷不已</div>
+                        </div>
+                        
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-code"></i></div>
+                            <div class="interest-title">编程探索</div>
+                            <div class="interest-desc">偶尔写几行代码，享受逻辑在屏幕上跳跃的乐趣</div>
+                        </div>
+                    </div>
+                    
+                    <p>我常把学习比作在知识的海洋里拾贝。虽然没能深入每一片海域，但每个领域都有着独特的风景值得一看。这种浅尝辄止的学习方式让我对世界保持了开放与好奇。</p>
+                </div>
+            </div>
+            
+            <div class="about-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-gamepad"></i> 休闲时光</h2>
+                </div>
+                <div class="card-content">
+                    <p>学习之余，我有一个特殊的爱好：节奏游戏。在紧张刺激的打击音符中，我找到了专注与放松的平衡点。</p>
+                    
+                    <div class="interests-grid">
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-music"></i></div>
+                            <div class="interest-title">节奏游戏</div>
+                            <div class="interest-desc">指尖在屏幕上飞舞，音符如雨点般落下</div>
+                        </div>
+                        
+                        <div class="interest-card">
+                            <div class="interest-icon"><i class="fas fa-headphones"></i></div>
+                            <div class="interest-title">音乐体验</div>
+                            <div class="interest-desc">从电子乐到古典乐，享受不同风格带来的律动感</div>
+                        </div>
+                    </div>
+                    
+                    <p>不同于许多同龄人对动漫、游戏的深度沉浸，我更享受轻度的休闲方式。在我的生活中，ACGN文化只是一个旁观者的位置，而非参与者。</p>
+                </div>
+            </div>
+            
+            <div class="about-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-book"></i> 浅尝辄止的哲学</h2>
+                </div>
+                <div class="card-content">
+                    <p>我深知自己在许多领域都是个"博而不精"的学习者。但在现阶段，我反而珍视这种学习态度：</p>
+                    
+                    <div class="quote-section">
+                        <p>"知识的星空是如此辽阔，我不愿早早把视线锁定在某一角落。就像在图书馆漫步，随手翻阅不同的书籍，每一本都给我新的启发，虽然可能不会把任何一本完全记住。"</p>
+                        <div class="author">—— Chidori Shiori</div>
+                    </quote>
+                    
+                    <p>我的学习就像是在不同星系间做短暂旅行，体会它们的魅力，而后转向下一个目的地。也许未来会专攻某一领域，但此刻的广度探索让我感到充实与愉悦。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于墨影</h3>
+                    <p>探索知识边界，分享学习的快乐</p>
+                    <div class="social-links">
+                        <a href="mailto:contact@example.com" class="email" title="邮箱">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                        <a href="#" class="qq" title="QQ">
+                            <i class="fab fa-qq"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>探索链接</h3>
+                    <p><a href="#">学习笔记</a></p>
+                    <p><a href="#">发现新领域</a></p>
+                    <p><a href="#">灵感时刻</a></p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>联系我</h3>
+                    <p>有任何问题或想交流的想法？</p>
+                    <p><a href="mailto:contact@example.com">contact@example.com</a></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 墨影 | Chidori Shiori | 在知识的海洋中浅尝辄止</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 移动端菜单交互
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // 点击菜单链接关闭菜单
+        const menuLinks = document.querySelectorAll('.nav-links a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // 添加滚动时导航栏变化
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
