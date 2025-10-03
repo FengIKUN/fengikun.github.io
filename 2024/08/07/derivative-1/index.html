@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    Chidori Shiori&#39;s Blog | 导数笔记 1
+</title>
+<link rel="stylesheet" href="/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+    <header>
+    <h1><a href="http://csfeng.dev.tc">
+            Chidori Shiori&#39;s Blog
+        </a></h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/archives">Archive</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+        <div class="paper-container">
+            <div class="header-decoration"></div>
+            <article>
+    <h1>
+        导数笔记 1
+    </h1>
+    <div class="post-meta">
+        <time>
+            2024年08月07日
+        </time>
+        
+            <span class="categories">
+                
+                    <a href="/categories/Notes/">
+                        Notes
+                    </a>
+                    
+                    <a href="/categories/Notes/Maths/">
+                        Maths
+                    </a>
+                    
+            </span>
+            
+    </div>
+
+    <div class="post-content">
+        <blockquote>
+<p>如果公式未渲染, 请刷新页面。</p>
+</blockquote>
+<h2 id="利用导数证明不等式"><a href="#利用导数证明不等式" class="headerlink" title="利用导数证明不等式"></a>利用导数证明不等式</h2><h3 id="直接证明型"><a href="#直接证明型" class="headerlink" title="直接证明型"></a>直接证明型</h3><p>简单类型, 直接证明即可.</p>
+<p><strong>例1</strong> (2023新课标I卷) 已知函数 \(f(x)&#x3D;a(\mathrm{e}^x+a)-x\), 证明：当 \(a&gt;0\) 时,  \(f(x)&gt;2\ln a+\dfrac32\).</p>
+<p><strong>解</strong> \(f’(x)&#x3D;a\mathrm{e}^x-1\), 当 \(a&gt;0\) 时, \(f(x)\) 在 \(\left(-\infty, -\ln a\right]\) 减, 在 \(\left[-\ln a, +\infty\right)\) 增.</p>
+<span id="more"></span>
+
+<p>则 \(f(x)_{min}&#x3D;f(-\ln a)&#x3D;a^2+\ln a+1.\)</p>
+<p>令 \(h(a)&#x3D;a^2+\ln a+1-\left(2\ln a+\dfrac32\right)&#x3D;a^2-\ln 2-\dfrac12.\)</p>
+<p>得 \(h’(a)&#x3D;2a-\dfrac1a,\ h(a)\geq h\left(\dfrac{\sqrt2}{2}\right)&#x3D;\dfrac12\ln2&gt;0.\) 则原式得证.</p>
+<hr>
+<h3 id="数列不等式型"><a href="#数列不等式型" class="headerlink" title="数列不等式型"></a>数列不等式型</h3><p>主要通过通项来证明. 如果不等式另一侧也是一个有关 \(n\) 的代数式, 那么一般直接将另一侧也分解成通项即可, 这种情况比较简单.</p>
+<p><strong>例2</strong> (2022新课标II卷) 已知函数 \(f(x)&#x3D;x\mathrm{e}^{ax}-\mathrm{e}^x.\)</p>
+<p>(3) 设 \(n\in\mathbb{N}^{+}\) , 证明：\(\displaystyle\sum_{k&#x3D;1}^n\dfrac1{\sqrt{k^2+k}}&gt;\ln(n+1)\) .</p>
+<p><strong>解</strong> 先证</p>
+<p>\[\dfrac1{\sqrt{k^2+k}}&gt;\ln\dfrac{k+1}{k}\tag{1}\]</p>
+<p>即可, 令 \(t&#x3D;\dfrac{k+1}{k}\ (t&gt;1)\), 得 \(k&#x3D;\dfrac1{t-1}\) , 则不等式化为</p>
+<p>\[\sqrt{t}-\dfrac1{\sqrt{t}}&gt;\ln t.\]</p>
+<p>令 \(h(t)&#x3D;\sqrt{t}-\dfrac1{\sqrt{t}}-\ln t\ (t&gt;1)\) , 则 \(h’(t)&#x3D;\dfrac{(\sqrt{t}-1)^2}{2t\sqrt{t}}&gt;0.\) 得 \(h(t)&gt;h(1)&#x3D;0\) , 因此 \((1)\) 式得证, 对两边从 \(1\) 到 \(n\) 求和即得原不等式.</p>
+<hr>
+<p><strong>例3</strong> 已知函数 \(f(x)&#x3D;\dfrac{x\ln x}{x+1}\).</p>
+<p>(2) 如果 \(\forall x\in[1,+\infty)\) 成立 \(f(x)\leq m(x-1)\), 求 \(m\) 得取值范围. 答案：\(m\geq\dfrac12\).</p>
+<p>(3) 求证: \(\ln\sqrt[4]{2n+1}&lt;\displaystyle\sum_{k&#x3D;1}^n\dfrac{k}{4k^2-1}\) .</p>
+<p><strong>解</strong> 对第 (2) 问中的不等式取 \(m&#x3D;\dfrac12\) 得</p>
+<p>\[\forall x\in[1,+\infty),\ \dfrac{x\ln x}{x+1}\leq\dfrac12(x-1).\]</p>
+<p>即</p>
+<p>\[\ln x\leq\dfrac{(x+1)(x-1)}{2x}\]</p>
+<p>取 \(x&#x3D;\dfrac{2k+1}{2k-1}\ (x&gt;1)\) 得</p>
+<p>\[\ln\dfrac{2k+1}{2k-1}&lt;\dfrac{4k}{(2k+1)(2k-1)}&#x3D;\dfrac{4k}{4k^2-1}\ .\]</p>
+<p>即</p>
+<p>\[\ln\sqrt[4]{\dfrac{2k+1}{2k-1}}&lt;\dfrac{k}{4k^2-1}\ .\]</p>
+<p>两边从 \(1\) 到 \(n\) 求和即得原不等式.</p>
+<hr>
+<p>如果不等式另一侧<strong>不易直接得出</strong>通项, 比如是一个<strong>常数</strong>, 那么一种法子是可以通过一些常见的形式分解出通项, 并试探一下能否证出. 这种手段其实还是很常见的.</p>
+<p>我们经常使用这样的分解方法：</p>
+<p>\[1&gt;1-\dfrac1{n+1}&#x3D;\left(1-\dfrac12\right)+\left(\dfrac12-\dfrac13\right)+…+\left(\dfrac1n-\dfrac1{n+1}\right).\]</p>
+<p><strong>例4</strong> (2023天津卷) 已知函数 \(f(x)&#x3D;\left(\dfrac1x+\dfrac12\right)\ln(x+1)\).</p>
+<p>(2) 求证：当 \(x&gt;0\) 时, \(f(x)&gt;1.\)</p>
+<p>(3) 证明：\(\dfrac56&lt;\ln(n-\left(n+\dfrac12\right)\ln n+n\leq1.\)</p>
+<p><strong>解 (2)</strong> 当 \(x&gt;0\) 时, 即证 \(\left(\dfrac1x+\dfrac12\right)\ln(x+1)&gt;1\) , 即证</p>
+<p>\[\ln(x+1)&gt;\dfrac{1}{\dfrac1x+\dfrac12}&#x3D;\dfrac{2x}{x+2}.\]</p>
+<p>令 \(h(x)&#x3D;\ln(x+1)-\dfrac{2x}{x+2}.\) 得 \(h’(x)&#x3D;\dfrac1{x+1}-\dfrac{4}{(x+2)^2}&#x3D;\dfrac{x^2}{(x+1)(x+2)^2}&gt;0.\) 因此 \(h(x)&gt;h(0)&#x3D;0.\) 则待证不等式得证.</p>
+<p><strong>解 (3)</strong> 将中间式表示的数列记为 \(\{a_n\}\) , 则 \(a_1&#x3D;\ln1-\dfrac32\ln1+1&#x3D;1\) , 不等式右边容易由该数列的递减性得出, 下面证明左边成立.</p>
+<p>由于 \(a_1&#x3D;1\) , 则只需证 \(a_1-a_n&lt;\dfrac16\) 即可.</p>
+<p>记 \(b_n&#x3D;a_{n}-a_{n+1}&#x3D;\left(n+\dfrac12\right)\ln\dfrac{n+1}n-1\) . 则只需证 \(b_1+b_2+…+b_{n-1}&lt;\dfrac16\) .</p>
+<p>下证</p>
+<p>\[b_n&lt;\dfrac16\left(\dfrac1n-\dfrac1{n+1}\right).\tag{2}\]</p>
+<p>即证 \(\left(n+\dfrac12\right)\ln\dfrac{n+1}n-1&lt;\dfrac16\left(\dfrac1n-\dfrac1{n+1}\right),\)</p>
+<p>令 \(t&#x3D;\dfrac{n+1}{n}\ (t&gt;1)\) , 即证 \(\dfrac{t+1}{2(t-1)}\ln t&lt;1+\dfrac{(t-1)^2}{6t},\) 即证</p>
+<p>\[\ln t&lt;\dfrac{(t^2+4t+1)(t-1)}{3t(t+1)}&#x3D;\dfrac{t^3+3t^2-3t-1}{3t(t+1)}.\]</p>
+<p>令 \(p(t)&#x3D;\ln t-\dfrac{t^3+3t^2-3t-1}{3t(t+1)}.\)</p>
+<p>得 \(p’(t)&#x3D;\dfrac{-t^4+t^3+t-1}{3t^2(t+1)^2}&#x3D;-\dfrac{(t-1)^2(t^2+t+1)}{3t^2(t+1)^2}&lt;0\) 恒成立, 则 \(p(t)&lt;p(1)&#x3D;0\). </p>
+<p>因此 \((2)\) 式得证.</p>
+<p>则</p>
+<p>\[b_1+b_2+…+b_{n-1}&#x3D;\dfrac16\left(1-\dfrac1{n}\right)&lt;\dfrac16\]</p>
+<p>得证.</p>
+<hr>
+<p>另外, 我们也可以通过积分的方法来估计数列的上限. 这种方法视函数而定, 当函数斜率较小时会比较精确.</p>
+<p><strong>另解 (3)</strong> 同样转化为证 \(b_1+b_2+…+b_{n-1}&lt;\dfrac16\) , 其中 \(b_n&#x3D;\left(n+\dfrac12\right)\ln\dfrac{n+1}n-1\) .</p>
+<p>令 \(\mu(x)&#x3D;\left(x+\dfrac12\right)\ln\dfrac{x+1}x-1\ \ (x&gt;0)\).</p>
+<p>可知 \(\mu(x)\) 在其定义域内单调递减而且恒正, 因此可做出估计</p>
+<p>\[\displaystyle\sum_{k&#x3D;2}^nb_k&lt;\displaystyle\int_1^n\mu(x)\mathrm{d}x&lt;\displaystyle\int_1^{+\infty}\mu(x)\mathrm{d}x\]</p>
+<p>之所以我们不从 \(1\) 开始求和, 是因为 \(\displaystyle\lim_{x\to0}\mu(x)&#x3D;+\infty\) 导致 \(\displaystyle\int_0^n\mu(x)\mathrm{d}x\) 即使收敛（它确实收敛）也容易导致估计误差过大.</p>
+<p>计算得</p>
+<p>\[\displaystyle\int\left(\left(x+\dfrac12\right)\ln\dfrac{x+1}x-1\right)\mathrm{d}x&#x3D;\dfrac12\left((x^2+x)\ln\dfrac{x+1}{x}-x\right)+C.\]</p>
+<p>则</p>
+<p>\[\displaystyle\int_1^{+\infty}\mu(x)\mathrm{d}x&#x3D;\dfrac12\displaystyle\lim_{x\to+\infty}\left((x^2+x)\ln\dfrac{x+1}{x}-x\right)-\left(\ln2-\dfrac12\right)\]</p>
+<p>又 \(\displaystyle\lim_{x\to+\infty}\left((x^2+x)\ln\dfrac{x+1}{x}-x\right)&#x3D;\dfrac14\) , 得</p>
+<p>\[\displaystyle\sum_{k&#x3D;2}^nb_k&lt;\displaystyle\int_1^{+\infty}\mu(x)\mathrm{d}x&#x3D;\dfrac34-\ln2.\]</p>
+<p>则</p>
+<p>\[a_1-a_n&#x3D;b_1+\displaystyle\sum_{k&#x3D;2}^{n-1}b_k&lt;\dfrac32\ln2-1+\left(\dfrac34-\ln2\right)&#x3D;\dfrac12\ln2-\dfrac14&lt;\dfrac16.\]</p>
+<hr>
+<p>其实, 证明了 \(\{a_n\}\) 单调递减后, 还可以直接求出其极限来证明原不等式, 甚至得到精确的下界.</p>
+<p><strong>另解 (3)</strong></p>
+<p>由于 \(\textrm{Stirling}\) 公式给出</p>
+<p>\[n!\sim\sqrt{2\pi n}\left(\dfrac{n}{\mathrm{e}}\right)^n\ \ (n\to+\infty).\]</p>
+<p>则</p>
+<p>\[\displaystyle\lim_{n\to+\infty}\ln(n&#x3D;\dfrac12(\ln2\pi+\ln n)+n(\ln n-1)&#x3D;\dfrac12\ln2\pi+\left(n+\dfrac12\right)\ln n-n,\]</p>
+<p>\[\displaystyle\lim_{n\to+\infty}\left(\ln(n-\left(n+\dfrac12\right)\ln n+n\right)&#x3D;\dfrac12\ln2\pi.\]</p>
+<p>其中,  \(\dfrac12\ln2\pi\approx0.91894\) . 结合 \(\{a_n\}\) 单调递减性知</p>
+<p>\[a_n&gt;\dfrac12\ln2\pi&gt;\dfrac56.\]</p>
+
+    </div>
+</article>
+                <div class="page-footer">
+    <p>© 2025
+            Chidori Shiori · Chidori Shiori's Blog · NeXim</p>
+</div>
+        </div>
+</body>
+
+</html>

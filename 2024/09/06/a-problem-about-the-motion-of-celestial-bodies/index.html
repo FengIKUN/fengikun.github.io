@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    Chidori Shiori&#39;s Blog | 一个关于天体运动的问题
+</title>
+<link rel="stylesheet" href="/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+    <header>
+    <h1><a href="http://csfeng.dev.tc">
+            Chidori Shiori&#39;s Blog
+        </a></h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/archives">Archive</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+        <div class="paper-container">
+            <div class="header-decoration"></div>
+            <article>
+    <h1>
+        一个关于天体运动的问题
+    </h1>
+    <div class="post-meta">
+        <time>
+            2024年09月06日
+        </time>
+        
+            <span class="categories">
+                
+                    <a href="/categories/Notes/">
+                        Notes
+                    </a>
+                    
+                    <a href="/categories/Notes/Physics/">
+                        Physics
+                    </a>
+                    
+            </span>
+            
+    </div>
+
+    <div class="post-content">
+        <blockquote>
+<p>如果公式未渲染，请刷新页面。</p>
+</blockquote>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><strong>Problem</strong></h3><p>木星是太阳系中质量最大的行星。假设地球和木星都在绕太阳的圆形轨道上运行, 且它们的轨道共面。<span id="more"></span>将太阳、地球和木星视为点质量, 忽略太阳系中其他天体的引力影响, 并假设在某些时刻地球与木星之间的引力可以忽略不计。设太阳和木星的质量分别为 \(m_s\) 和 \(m_j\), 引力常数为 \(\mathrm{G}\)。地球和木星绕太阳的轨道半径分别为 \(r_e\) 和 \(r_j\). 在某一时刻, 设地球与太阳的连线与木星与太阳的连线之间的夹角为 \(\theta\) . 如果在这一刻太阳的质量突然变为零, 求：  </p>
+<ol>
+<li>地球相对于木星的速度大小 \(v_{ej}\) . </li>
+<li>使地球不被木星的引力捕获所需的最小速度 \(v_0\) .</li>
+</ol>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h3><p>由牛顿第二定律和万有引力定律可得</p>
+<p>\[\frac{\mathrm{G}m_s m_e}{r_e^2} &#x3D; m_e \frac{v_e^2}{r_e}.\]</p>
+<p>整理得</p>
+<p>\[v_e &#x3D; \sqrt{\frac{\mathrm{G}m_s}{r_e}}.\]</p>
+<p>同理可得</p>
+<p>\[v_j &#x3D; \sqrt{\frac{\mathrm{G}m_s}{r_j}}.\]</p>
+<p>根据几何关系, 地球相对于木星的速度为</p>
+<p>\[v_{ej} &#x3D; \sqrt{v_e^2+v_j^2-2v_e v_j \cos\theta} &#x3D; \sqrt{\bigg(\frac{1}{r_e}+\frac{1}{r_j}-\frac{2\cos\theta}{\sqrt{r_e r_j}}\bigg)\mathrm{G}m_s}.\]</p>
+<p>要防止地球被木星的引力捕获, 必须满足</p>
+<p>\[\frac{1}{2}m_e v_0^2 - \frac{\mathrm{G}m_j m_e}{r_{ej}} &#x3D; 0.\]</p>
+<p>解得</p>
+<p>\[v_0 &#x3D; \sqrt{\frac{2\mathrm{G}m_j}{\sqrt{r_e^2 + r_j^2 - 2r_e r_j \cos\theta}}}.\]</p>
+
+    </div>
+</article>
+                <div class="page-footer">
+    <p>© 2025
+            Chidori Shiori · Chidori Shiori's Blog · NeXim</p>
+</div>
+        </div>
+</body>
+
+</html>

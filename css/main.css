@@ -1,0 +1,249 @@
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f8f8;
+    font-family: 'Noto Serif SC', 'Times New Roman', serif;
+    color: #333;
+    line-height: 1.8;
+    padding: 40px 20px;
+    background-image: linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 100% 1.8em;
+    background-position: 0 1.2em;
+}
+
+/* 纸张容器 */
+.paper-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 60px 70px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paper-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* 页眉装饰 */
+.header-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #e0e0e0, #d0d0d0, #e0e0e0);
+}
+
+/* 标题样式 */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Noto Serif SC', 'Times New Roman', serif;
+    font-weight: 700;
+    margin: 1.8em 0 0.8em;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+h2 {
+    font-size: 1.8rem;
+    padding-left: 15px;
+    border-left: 4px solid #e0e0e0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5em;
+}
+
+h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* 段落样式 */
+p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+    font-size: 1.0rem;
+    hyphens: auto;
+}
+
+/* 列表样式 */
+ul,
+ol {
+    margin: 1.2em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin-bottom: 0.6em;
+}
+
+/* 引用块 */
+blockquote {
+    background: #f9f9f9;
+    border-left: 4px solid #d0d0d0;
+    padding: 15px 20px;
+    margin: 1.5em 0;
+    position: relative;
+    font-style: italic;
+}
+
+blockquote:before {
+    content: '"';
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    font-size: 3.8rem;
+    color: #e0e0e0;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* 代码块 */
+pre {
+    background: #f5f5f5;
+    padding: 15px;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    border: 1px solid #e0e0e0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.95rem;
+}
+
+/* 页脚 */
+.page-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 1.0rem;
+    color: #777;
+}
+
+/* 导航样式 */
+nav {
+    text-align: center;
+    margin: 20px 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* 文章列表 */
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.post-meta {
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 0.8em;
+}
+
+.post-meta time {
+    margin-right: 15px;
+}
+
+.categories a {
+    margin-right: 8px;
+    padding: 2px 8px;
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+/* 归档页样式 */
+.archive-item {
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.archive-item time {
+    width: 100px;
+    color: #777;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .paper-container {
+        padding: 40px 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .paper-container {
+        padding: 30px 20px;
+    }
+
+    body {
+        padding: 20px 10px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* 链接样式 */
+a {
+    color: #555;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #333;
+    border-bottom: 1px solid #999;
+}

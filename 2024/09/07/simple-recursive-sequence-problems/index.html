@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    Chidori Shiori&#39;s Blog | 数列笔记 1
+</title>
+<link rel="stylesheet" href="/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+    <header>
+    <h1><a href="http://csfeng.dev.tc">
+            Chidori Shiori&#39;s Blog
+        </a></h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/archives">Archive</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+        <div class="paper-container">
+            <div class="header-decoration"></div>
+            <article>
+    <h1>
+        数列笔记 1
+    </h1>
+    <div class="post-meta">
+        <time>
+            2024年09月07日
+        </time>
+        
+            <span class="categories">
+                
+                    <a href="/categories/Notes/">
+                        Notes
+                    </a>
+                    
+                    <a href="/categories/Notes/Maths/">
+                        Maths
+                    </a>
+                    
+            </span>
+            
+    </div>
+
+    <div class="post-content">
+        <blockquote>
+<p>如果公式未渲染，请刷新页面。</p>
+</blockquote>
+<h2 id="基础方法"><a href="#基础方法" class="headerlink" title="基础方法"></a>基础方法</h2><p>如果递推公式可化为 \(a_{n+1}-a_{n}&#x3D;f(n)\) 的形式，我们可以用累加的方法，利用</p>
+<span id="more"></span>
+
+<p>$$a_n&#x3D;(a_n-a_{n-1})+(a_{n-1}-a_{n-2})+…+(a_2-a_1)+a_1&#x3D;a_1+\sum_{k&#x3D;1}^{n-1}f(k)$$</p>
+<p>得到 \({a_n}\) 的通项公式.</p>
+<p>类似地，如果递推公式可化为 \(\dfrac{a_{n+1}}{a_{n}}&#x3D;f(n)\) 的形式，我们可以用累乘的方法，利用</p>
+<p>\[a_n&#x3D;\dfrac{a_{n}}{a_{n-1}}\dfrac{a_{n-1}}{a_{n-2}}…\dfrac{a_{2}}{a_{1}}\cdot a_1&#x3D;a_1\prod_{k&#x3D;1}^{n-1}f(k)\]</p>
+<p>也可得到 \({a_n}\) 的通项公式.</p>
+<blockquote>
+<p>注意如果利用\(a_n&#x3D;S_n-S_{n-1}\), 则必须要求\(n\geq2\).</p>
+</blockquote>
+<p><strong>例1</strong> 已知数列 \({a_n}\) 满足\(a_1&#x3D;1\) , 前 \(n\) 项和为 \(S_n\) ，且 \(\forall n\in\mathbb{N},\ S_n&#x3D;n^2a_n\) , 求此数列的通项公式.</p>
+<p><strong>解</strong></p>
+<p>对 \(n\geq2\) , </p>
+<p>\[a_n&#x3D;S_n-S_{n-1}&#x3D;n^2a_n-(n-1)^2a_{n-1}.\]</p>
+<p>移项得</p>
+<p>\[(n+1)(n-1)a_n&#x3D;(n-1)^2a_{n-1}, \]</p>
+<p>\[\dfrac{a_n}{a_{n-1}}&#x3D;\dfrac{n-1}{n+1}.\]</p>
+<p>则</p>
+<p>\[a_n&#x3D;\dfrac{a_{n}}{a_{n-1}}\dfrac{a_{n-1}}{a_{n-2}}…\dfrac{a_{2}}{a_{1}}\cdot a_1&#x3D;\dfrac{n-1}{n+1}\dfrac{n-2}{n}\dfrac{n-3}{n-1}…\dfrac{2}{4}\cdot\dfrac{1}{3}\cdot1&#x3D;\dfrac{2}{n(n+1)}\]</p>
+<p>而当 \(n&#x3D;1\) 时, 经检验也满足该通项公式.</p>
+<p>因此该数列得通项公式为</p>
+<p>\[a_n&#x3D;\dfrac{2}{n(n+1)}.\]</p>
+<p><strong>例2</strong> 已知数列\({a_n}\)满足\(a_1&#x3D;1,\ a_{n-1}-a_n&#x3D;\dfrac{a_n}{n^2-1}\), 求此数列的通项公式.</p>
+<p><strong>解</strong></p>
+<p>\[\dfrac{a_n}{a_{n-1}}&#x3D;\dfrac1{\left(1+\dfrac{1}{n^2-1}\right)}&#x3D;\dfrac{n^2-1}{n^2}.\]</p>
+<p>这时，有两种方法.</p>
+<p>如果直接累乘，</p>
+<p>\[a_n&#x3D;\dfrac{(n+1)(n-1)}{n^2}\dfrac{n(n-2)}{(n-1)^2}\dfrac{(n-1)(n-3)}{(n-2)^2}…\dfrac{4\times2}{3^2}\dfrac{3\times1}{2^2}\cdot1&#x3D;\dfrac{n+1}{2n}.\]</p>
+<p>我们也可以将原式化为</p>
+<p>\[\dfrac{na_n}{(n-1)a_{n-1}}&#x3D;\dfrac{n+1}{n}.\]</p>
+<p>如果我们令\(b_n&#x3D;na_n\), 则</p>
+<p>\[\dfrac{b_n}{b_{n-1}}&#x3D;\dfrac{n+1}{n}.\]</p>
+<p>\[na_n&#x3D;b_n&#x3D;\dfrac{n+1}{n}\dfrac{n}{n-1}\dfrac{n-1}{n-2}…\dfrac{4}{3}\cdot\dfrac{3}{2}&#x3D;\dfrac{n+1}{2}\]</p>
+<p>所以</p>
+<p>\[a_n&#x3D;\dfrac{n+1}{2n}\]</p>
+
+    </div>
+</article>
+                <div class="page-footer">
+    <p>© 2025
+            Chidori Shiori · Chidori Shiori's Blog · NeXim</p>
+</div>
+        </div>
+</body>
+
+</html>
