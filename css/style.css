@@ -487,3 +487,29 @@ body.is-post .global-footer {
     text-align: center;
     padding: 24px 0 48px 0;
 }
+
+/* ====================
+   KaTeX 公式样式优化
+   ==================== */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    /* 给滚动条留出空间 */
+    /* 隐藏丑陋的原生滚动条，改用极简细线 */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.katex-display::-webkit-scrollbar {
+    height: 4px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+}
