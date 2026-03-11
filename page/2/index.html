@@ -11,10 +11,32 @@
 
 
         
+                <script>
+                    const userPref = localStorage.getItem('theme');
+                    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (userPref === 'dark' || (!userPref && systemDark)) {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                    }
+                </script>
 <meta name="generator" content="Hexo 8.1.1"></head>
-</head>
 
 <body class="is-home">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
 
     <div class="controls">
     <button id="scatter-btn">
@@ -124,7 +146,7 @@
             <a href="/tags/physics/" class="tag"># physics</a>
             
                 <a href="/tags" class="tag"
-                    style="background: var(--text-main); color: #fff; border: none;">所有标签</a>
+                    style="background: var(--primary-bg); color: var(--primary-text); border: none;">所有标签</a>
     </div>
 </div>
 
@@ -168,16 +190,15 @@
     </div>
     
 
-        <!-- 模块 5：名言 -->
         
-            <div class="module mod-quote" style="background: var(--text-main); color: #fff;">
+            <div class="module mod-quote" style="background: var(--quote-bg); color: var(--quote-text);">
                 <svg class="svg-icon" style="stroke: var(--accent); margin-bottom: -8px;" viewBox="0 0 24 24">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <p style="color: #ccc; font-style: italic; font-family: serif; font-size: 16px;">
+                <p style="color: var(--quote-muted); font-style: italic; font-family: serif; font-size: 16px;">
                     "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."
                 </p>
-                <span class="post-meta" style="color: #888;">— Antoine de Saint-Exupéry</span>
+                <span class="post-meta" style="color: var(--quote-muted);">— Antoine de Saint-Exupéry</span>
             </div>
             
 
@@ -185,11 +206,11 @@
                 <!-- about -->
                 <div class="module mod-profile">
                     <svg viewBox="0 0 100 100" style="width: 48px; height: 48px; margin-bottom: 8px;">
-                        <rect x="0" y="0" width="200" height="100" fill="#1A1A1A" rx="4"></rect>
-                        <circle cx="50" cy="50" r="20" fill="#FFFFFF"></circle>
-                        <path d="M50 50 L80 80" stroke="#F4F4F2" stroke-width="8"></path>
+                        <rect x="0" y="0" width="100" height="100" fill="var(--text-main)" rx="4"></rect>
+                        <circle cx="50" cy="50" r="20" fill="var(--card-bg)"></circle>
+                        <path d="M50 50 L80 80" stroke="var(--bg-color)" stroke-width="8"></path>
                     </svg>
-                    <h2>Hi, 我是 Chidori Shiori. </h2>
+                    <h2>Hi, 我是 Chidori Shiori。</h2>
                     <p>知音少，弦断有谁听？</p>
                     <div>
                         <a href="/about">Read more →</a>
@@ -206,6 +227,20 @@
 <script src="/js/desktop.js"></script>
 
                 
+
+                    <script>
+                        const themeToggleBtn = document.getElementById('theme-toggle');
+                        themeToggleBtn.addEventListener('click', () => {
+                            const html = document.documentElement;
+                            if (html.getAttribute('data-theme') === 'dark') {
+                                html.removeAttribute('data-theme');
+                                localStorage.setItem('theme', 'light');
+                            } else {
+                                html.setAttribute('data-theme', 'dark');
+                                localStorage.setItem('theme', 'dark');
+                            }
+                        });
+                    </script>
 </body>
 
 </html>

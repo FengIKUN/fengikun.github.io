@@ -5,6 +5,54 @@
     --text-muted: #737373;
     --border-color: #E0E0E0;
     --accent: #D94A38;
+    --box-bg: #FAFAFA;
+    --code-bg: #F8F8F8;
+    --inline-code-bg: #F0F0F0;
+    --shadow-base: rgba(0, 0, 0, 0.06);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
+
+    --primary-bg: #1A1A1A;
+    --primary-text: #FFFFFF;
+    --quote-bg: #1A1A1A;
+    --quote-text: #FFFFFF;
+    --quote-muted: #CCCCCC;
+}
+
+html[data-theme='dark'] {
+    --bg-color: #161616;
+    --card-bg: #222222;
+    --text-main: #EFEFEF;
+    --text-muted: #999999;
+    --border-color: #383838;
+    --accent: #E55B4A;
+    --box-bg: #2A2A2A;
+    --code-bg: #1E1E1E;
+    --inline-code-bg: #333333;
+    --shadow-base: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.6);
+
+    --primary-bg: #383838;
+    --primary-text: #EFEFEF;
+    --quote-bg: #2C2C2C;
+    --quote-text: #EFEFEF;
+    --quote-muted: #999999;
+}
+
+body,
+.module,
+.copyright-box,
+.post-navigation a,
+.back-btn,
+.theme-toggle {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.is-home .module {
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+}
+
+.is-home .module.dragging {
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 body,
@@ -20,7 +68,6 @@ html {
     background-size: 24px 24px;
 }
 
-/* 如果是首页，锁定屏幕不可滚动；如果是文章页，允许滚动 */
 body.is-home {
     overflow: hidden;
     position: fixed;
@@ -35,35 +82,34 @@ body.is-home {
 }
 
 button {
-    background: var(--text-main);
-    color: #fff;
+    background: var(--primary-bg);
+    color: var(--primary-text);
     border: none;
     padding: 12px 24px;
     font-size: 14px;
     cursor: pointer;
     border-radius: 2px;
     transition: background 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px var(--shadow-base);
 }
 
 button:hover {
     background: var(--accent);
 }
 
-/* 卡片通用样式 */
+/* 卡片 */
 .module {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 2px;
     padding: 24px;
     box-sizing: border-box;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 24px var(--shadow-base);
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-/* 首页独有卡片样式 */
 .is-home .module {
     position: absolute;
     cursor: grab;
@@ -83,11 +129,10 @@ button:hover {
 
 .is-home .module.dragging {
     cursor: grabbing;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 48px var(--shadow-hover);
     transition: none;
 }
 
-/* 基础排版 */
 h1,
 h2,
 h3 {
@@ -117,7 +162,6 @@ a {
     color: var(--accent);
 }
 
-/* 特定模块的尺寸 */
 .mod-profile {
     width: 300px;
 }
@@ -138,9 +182,6 @@ a {
     width: 240px;
 }
 
-/* 新增：导航卡片宽度 */
-
-/* 导航卡片内的链接样式 */
 .nav-link {
     display: flex;
     justify-content: space-between;
@@ -212,7 +253,6 @@ a {
     stroke-linejoin: round;
 }
 
-/* 文章详情页增强排版 */
 .back-btn {
     display: inline-block;
     background: var(--card-bg);
@@ -236,7 +276,6 @@ a {
 
 .post-content p {
     margin-bottom: 1em;
-    color: #333;
 }
 
 .post-content img {
@@ -246,7 +285,7 @@ a {
 }
 
 .post-content pre {
-    background: #f8f8f8;
+    background: var(--code-bg);
     padding: 16px;
     border: 1px solid var(--border-color);
     overflow-x: auto;
@@ -256,16 +295,11 @@ a {
 
 .post-content code {
     font-family: monospace;
-    background: #f0f0f0;
+    background: var(--inline-code-bg);
     padding: 2px 4px;
     border-radius: 2px;
 }
 
-/* ====================
-   独立页面与列表样式
-   ==================== */
-
-/* 列表行样式 */
 .archive-item {
     display: flex;
     align-items: center;
@@ -287,7 +321,6 @@ a {
     color: var(--accent);
 }
 
-/* 标签云样式 */
 .tag-cloud a {
     display: inline-block;
     margin: 4px 8px;
@@ -301,7 +334,6 @@ a {
     transform: scale(1.05);
 }
 
-/* 分类树样式 */
 .category-tree ul {
     list-style: none;
     padding-left: 20px;
@@ -329,7 +361,6 @@ a {
     font-size: 12px;
 }
 
-/* 分页器 */
 .pagination {
     display: flex;
     gap: 16px;
@@ -355,11 +386,6 @@ a {
     color: var(--accent);
 }
 
-/* ====================
-   新增组件样式
-   ==================== */
-
-/* 主页联系方式卡片 */
 .mod-contact {
     width: auto;
     min-width: 160px;
@@ -374,11 +400,10 @@ a {
     transform: translateY(-2px);
 }
 
-/* 文章末尾：版权声明框 */
 .copyright-box {
     margin-top: 48px;
     padding: 16px 20px;
-    background: #FAFAFA;
+    background: var(--box-bg);
     border: 1px solid var(--border-color);
     border-radius: 2px;
     font-size: 13px;
@@ -397,7 +422,6 @@ a {
     color: var(--accent);
 }
 
-/* 文章末尾：上下篇导航 */
 .post-navigation {
     display: flex;
     justify-content: space-between;
@@ -414,7 +438,7 @@ a {
     border: none !important;
     padding: 12px;
     border-radius: 2px;
-    background: #FAFAFA;
+    background: var(--box-bg);
     transition: background 0.2s;
     text-decoration: none;
 }
@@ -449,7 +473,6 @@ a {
     pointer-events: none;
 }
 
-/* 全局 Footer */
 .global-footer {
     font-size: 12px;
     color: var(--text-muted);
@@ -466,21 +489,18 @@ a {
     border-color: var(--accent);
 }
 
-/* 巧妙区分 Footer 在主页与内页的展现方式 */
 body.is-home .global-footer {
     position: fixed;
     bottom: max(24px, env(safe-area-inset-bottom));
     left: max(24px, env(safe-area-inset-left));
     z-index: 100;
     pointer-events: none;
-    /* 防止鼠标误触导致背后的卡片无法拖拽 */
 }
 
 body.is-home .global-footer a {
     pointer-events: auto;
 }
 
-/* 仅允许 a 标签可点 */
 
 body.is-post .global-footer {
     position: relative;
@@ -488,15 +508,10 @@ body.is-post .global-footer {
     padding: 24px 0 48px 0;
 }
 
-/* ====================
-   KaTeX 公式样式优化
-   ==================== */
 .katex-display {
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 8px;
-    /* 给滚动条留出空间 */
-    /* 隐藏丑陋的原生滚动条，改用极简细线 */
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) transparent;
 }
@@ -512,4 +527,50 @@ body.is-post .global-footer {
 .katex-display::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 2px;
+}
+
+
+.theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: max(24px, env(safe-area-inset-right));
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    background: var(--card-bg) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-base);
+}
+
+.theme-toggle:hover {
+    background: var(--text-main) !important;
+    color: var(--card-bg) !important;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+html[data-theme='dark'] .theme-toggle .sun-icon {
+    display: block;
+}
+
+html[data-theme='dark'] .theme-toggle .moon-icon {
+    display: none;
 }
